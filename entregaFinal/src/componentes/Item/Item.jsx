@@ -9,12 +9,14 @@ import { Link } from 'react-router-dom';
 // import { useAppContext } from '../Context/Context';
 import { useAppContext } from '../Context/Context';
 
+import "./item.css"
+
 function Item({img, nombre, valor, id, categoria}) {
-    const {agregarAlCarrito} = useAppContext;
+    const {agregarAlCarrito} = useAppContext();
     return (
       <div className='cardContainer'>
           <div key={id} className="card"> 
-          <img src={img} className="card-img-top imgCard" alt={nombre} />
+          <img src={img} className="imgCard" alt={nombre} />
           <h5 className="card-title">{nombre}</h5>
           <p className="card-text">USD {valor}</p>
           <p className="card-text">Uso recomendado:{categoria}</p>

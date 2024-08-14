@@ -50,6 +50,7 @@ function App() {
       <div>  
       <ContextProvider>
         <BrowserRouter>
+          <p>Hola mundos</p>
           <NavBar></NavBar>
           {/* <Filter filterState={filterProducts} setFilterState={setFilterProducts} /> */}
 

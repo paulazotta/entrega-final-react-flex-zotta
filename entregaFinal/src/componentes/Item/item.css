@@ -1,0 +1,19 @@
+.cardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    margin: 3px;
+    max-width: 250px;
+    min-height: 380px;
+    align-self: center;
+}
+.imgCard{
+    width: 85%;
+}
+button{
+    background-color: orange;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 7px;
+    border: none;
+}

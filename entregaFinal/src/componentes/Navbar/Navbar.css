@@ -1,8 +1,35 @@
 .cartWidget{
     width: 15%;
 }
-.lista{
+header{
+    display: flex;
+    
+    
+    
+    
+}
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: aqua;
+   
+    justify-content: center;
+}    
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+}
+li{
+    display: flex;
     list-style: none;
-    text-decoration: none;
+    padding: 10px;
 
+   
+}
+.nav-link{
+    text-align: center;
+    text-decoration: none;
 }
