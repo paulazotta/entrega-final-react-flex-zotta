@@ -1,12 +1,15 @@
-import React from 'react'
-import bolsa from './assets/bolsa.svg'
+import React from 'react';
+import bolsa from './assets/bolsa.svg';
 import './CartWidget.css';
+import { useAppContext } from "../Context/Context";
 
-const CartWidget = () => {
+
+function CartWidget() {
+  const {carrito} = useAppContext();
   return (
     <div>
-        <img src={bolsa} alt="bolsa" className='cartWidget'/>
-        <p>0</p>
+      <img src={bolsa} alt="bolsa-compras"  className='cartWidget' />
+      <p>{carrito.length}</p>
     </div>
   )
 }
