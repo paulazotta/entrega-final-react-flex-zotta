@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react'
 import arrayProductos from '../Productos/arrayProductos';
 import {initializeApp} from "firebase/app";
-import {collection, getDocs, getFirestore} from "firebase/firestore";
+import {addDoc, collection, getDocs, getFirestore} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAjOUbLlh3kF6D38EnFhK_M7onjL3LKH8E",
@@ -17,6 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore (app)
 
 const productsCollection = collection (db, "productos");
+const ordersCollection = collection (db, "ordenes");
 
 // 1. Creo las funciones para usar el contexto
 // Creo el contexto 
@@ -56,9 +57,21 @@ export const ContextProvider = (props) => {
         carritoAuxiliar.push(productoAAgregar);
         setCarrito(carritoAuxiliar);
     }
+
+    function crearOrden (){
+      const nuevaOrden = {
+        nombre: "Paula",
+        telefono: 15151515,
+        productos: carrito,
+      };
+      // console.log(nuevaOrden)
+      addDoc(ordersCollection, nuevaOrden).then(response =>{
+        console.log(response);
+      });
+    }
   return (
     <div>
-      <AppContext.Provider value={{productos, carrito, cargarData, agregarAlCarrito}}>
+      <AppContext.Provider value={{productos, carrito, setCarrito, cargarData, agregarAlCarrito, crearOrden}}>
         {props.children}
       </AppContext.Provider>
     </div>
