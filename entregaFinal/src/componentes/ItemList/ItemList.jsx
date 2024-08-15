@@ -4,7 +4,7 @@
 
 import React from 'react';
 import Item from '../Item/Item';
-
+import "./itemList.css"
 
 
 const ItemList = ({productos}) => {  
