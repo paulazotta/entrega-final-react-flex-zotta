@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import NavBar from './componentes/NavBar/NavBar'
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-
 import ItemDetail from './componentes/ItemDetail/ItemDetail'
 import Contacto from './componentes/Contacto/Contacto'
 import Inicio from './componentes/Inicio/Inicio'
 import Error404 from './componentes/Error404/Error404'
 import { ContextProvider } from './componentes/Context/Context'
 import ItemListConteiner from './componentes/ItemListContainer/ItemListContainer'
-import arrayProductos from './componentes/Productos/arrayProductos'
+
 
 // Dolar blue a través de una API. Traigo la info y la pongo en la variable dolarBlue. 
 //   fetch("https://dolarapi.com/v1/dolares/blue")
@@ -24,26 +21,6 @@ import arrayProductos from './componentes/Productos/arrayProductos'
 // });
 
 function App() {
-
-  //Esto iba bien
-  // const[filterProducts, setFilterProducts] = useState("todos");
-  // const [productos, setProductos] = useState ([])
-  //   useEffect(()=>{
-  //   fetchProductos()
-  //   .then (response => setProductos (response))
-  //   .catch (err=> console.error(err))
-  //   console.log("ejecutando efecto")
-  //   }, [filterProducts] )
-
-    // Esto no lo usaba
-    // useEffect(()=>{
-    //   categoria === taller?
-    //   <ItemList productos={categoria.taller} />
-    //   :
-    //   <ItemList productos={categoria.particular} />
-    // }, [])
-
-    // const [carrito, setCarrito] = useState([]);
     useEffect(()=>{}, []);
   return (
       
@@ -62,7 +39,7 @@ function App() {
             <Route path='/productos' element={<ItemListConteiner/>} ></Route>
           
             <Route path="/detalle/:id" element={<ItemDetail/>}></Route>
-            {/* <Route path="*" element={<Error404 />} ></Route> */}
+            <Route path="*" element={<Error404 />} ></Route>
           </Routes>
 
         </BrowserRouter>

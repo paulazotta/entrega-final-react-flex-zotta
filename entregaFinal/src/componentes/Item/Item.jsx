@@ -1,12 +1,9 @@
 // Va a mostrar un item en particular
 // por props tiene que recibir producto y valor
 
-
 import React from 'react'
 import BotonAgregarCarrito from '../BotonAgregarCarrito/BotonAgregarCarrito'
-// import './Item.css'
 import { Link } from 'react-router-dom';
-// import { useAppContext } from '../Context/Context';
 import { useAppContext } from '../Context/Context';
 
 import "./item.css"

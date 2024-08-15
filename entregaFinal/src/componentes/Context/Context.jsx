@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
-import arrayProductos from '../Productos/arrayProductos';
 import {initializeApp} from "firebase/app";
 import {addDoc, collection, getDocs, getFirestore} from "firebase/firestore";
 import Swal from 'sweetalert2';
@@ -45,7 +44,6 @@ export const ContextProvider = (props) => {
         
       getDocs(productsCollection).then(snapshot => {
         let arrayProductos = snapshot.docs.map(el => el.data());
-        // console.log(arrayProductos)
         setProductos(arrayProductos)
         }).catch (err => console.error(err));
     };
@@ -60,7 +58,7 @@ export const ContextProvider = (props) => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Producto agregado",
+          title: "Producto agregado correctamente",
           showConfirmButton: false,
           timer: 1500
         });
@@ -79,10 +77,20 @@ export const ContextProvider = (props) => {
           setCarrito([]);
         }).catch (err => {
           alert ("Por favor intente de nuevo en unos minutos");
-          console.error(err);
+          Swal.fire({
+            icon: "error",
+            title: "Algo salió mal",
+            text: "Por favor intentá de nuevo en unos minutos",
+            
+          });
         });
       } else {
-        alert ("No seleccionaste ningún producto")
+        Swal.fire({
+          icon: "info",
+          title: "Tu carrito está vacío",
+          text: "Podés ver y agregar los equipos que quieras desde la sección de productos",
+          
+        });
       }   
     };
   return (
