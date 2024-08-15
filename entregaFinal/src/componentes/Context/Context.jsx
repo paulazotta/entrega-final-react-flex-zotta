@@ -34,41 +34,40 @@ export const ContextProvider = (props) => {
     const [carrito, setCarrito] = useState ([]);
 
     function cargarData () {
-
-    getDocs(productsCollection).then(snapshot => {
-      let arrayProductos = snapshot.docs.map(el => el.data());
-      // console.log(arrayProductos)
-      setProductos(arrayProductos)
-    })
-
-
-
-        // arrayProductos()
-        // .then(response => {
-        //     setProductos(response);
-        // })
-        // .catch(err => console.error(err));
-    }
-
+      getDocs(productsCollection).then(snapshot => {
+        let arrayProductos = snapshot.docs.map(el => el.data());
+        // console.log(arrayProductos)
+        setProductos(arrayProductos)
+        }).catch (err => console.error(err));
+    };
 
     function agregarAlCarrito (id) {
         const carritoAuxiliar = [...carrito];
         const productoAAgregar = productos.find (el=> el.id === id);
         carritoAuxiliar.push(productoAAgregar);
         setCarrito(carritoAuxiliar);
-    }
+    };
 
     function crearOrden (){
-      const nuevaOrden = {
-        nombre: "Paula",
-        telefono: 15151515,
-        productos: carrito,
-      };
-      // console.log(nuevaOrden)
-      addDoc(ordersCollection, nuevaOrden).then(response =>{
-        console.log(response);
-      });
-    }
+      if (carrito.length > 0){
+        const nuevaOrden = {
+          nombre: "Paula",
+          telefono: 15151515,
+          productos: carrito,
+        };
+        // console.log(nuevaOrden)
+        addDoc(ordersCollection, nuevaOrden).then(response =>{
+          console.log("orden creada con el id:", response.id);
+          setCarrito([]);
+        }).catch (err => {
+          alert ("Por favor intente de nuevo en unos minutos");
+          console.error(err);
+        });
+      } else {
+        alert ("No seleccionaste ningún producto")
+      }   
+    };
+
   return (
     <div>
       <AppContext.Provider value={{productos, carrito, setCarrito, cargarData, agregarAlCarrito, crearOrden}}>
@@ -76,4 +75,4 @@ export const ContextProvider = (props) => {
       </AppContext.Provider>
     </div>
   )
-}
+};

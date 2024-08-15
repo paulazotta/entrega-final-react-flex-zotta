@@ -5,13 +5,9 @@ import { useAppContext } from "../Context/Context";
 
 
 function CartWidget() {
-  const {carrito, setCarrito, crearOrden} = useAppContext();
-  const handleCarrito = () => {
-    console.log("Ahora vas a ver el carrito", carrito);
-    console.log ("orden creada");
+  const {carrito, crearOrden} = useAppContext();
+  const handleCarrito = () => { 
     crearOrden();
-    setCarrito([]);
-    console.log("se limpió el carrito")
   }
   return (
     <div onClick={() => handleCarrito()}>
