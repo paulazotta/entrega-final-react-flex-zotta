@@ -6,8 +6,11 @@ import { useAppContext } from "../Context/Context";
 
 function CartWidget() {
   const {carrito} = useAppContext();
+  const handleCarrito = () => {
+    console.log("Ahora vas a ver el carrito", carrito)
+  }
   return (
-    <div>
+    <div onClick={() => handleCarrito()}>
       <img src={bolsa} alt="bolsa-compras"  className='cartWidget' />
       <p>{carrito.length}</p>
     </div>

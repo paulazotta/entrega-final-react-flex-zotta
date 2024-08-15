@@ -35,16 +35,18 @@ export const ContextProvider = (props) => {
     function cargarData () {
 
     getDocs(productsCollection).then(snapshot => {
-      console.log(snapshot)
+      let arrayProductos = snapshot.docs.map(el => el.data());
+      // console.log(arrayProductos)
+      setProductos(arrayProductos)
     })
 
 
 
-        arrayProductos()
-        .then(response => {
-            setProductos(response);
-        })
-        .catch(err => console.error(err));
+        // arrayProductos()
+        // .then(response => {
+        //     setProductos(response);
+        // })
+        // .catch(err => console.error(err));
     }
 
 
