@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+
 import './App.css'
 import NavBar from './componentes/NavBar/NavBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -21,7 +21,7 @@ import ItemListConteiner from './componentes/ItemListContainer/ItemListContainer
 // });
 
 function App() {
-    useEffect(()=>{}, []);
+ 
   return (
       
       <div>  

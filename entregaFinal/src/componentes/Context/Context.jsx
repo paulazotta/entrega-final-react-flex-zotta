@@ -36,12 +36,7 @@ export const ContextProvider = (props) => {
     const [carrito, setCarrito] = useState ([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-      cargarData();
-    }, [productos]);
-
     function cargarData ()  {
-        
       return getDocs(productsCollection).then(snapshot => {
         let arrayProductos = snapshot.docs.map(el => el.data());
         setProductos(arrayProductos);

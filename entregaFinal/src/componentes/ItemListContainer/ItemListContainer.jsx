@@ -8,15 +8,8 @@ const ItemListConteiner = () =>{
 
   useEffect (() =>{
     cargarData();
-  }, [productos])
-  // const filtrarProductos = (productos, filtro) =>{
-  //   if (filtro ===  "todos"){
-  //     return productos;
-  //   } else {
-  //     return productos.filter((producto) => producto.categoria === filtro)
-  //   }
-  // }
-  // const productosFiltrados = filtrarProductos (productos, filtro);
+  }, [])
+
   return(
     <div className="itemListContainer">
       {

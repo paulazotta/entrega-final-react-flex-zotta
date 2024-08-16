@@ -9,7 +9,10 @@ import { useAppContext } from '../Context/Context';
 import "./item.css"
 
 function Item({img, nombre, valor, id, categoria}) {
+    
     const {agregarAlCarrito} = useAppContext();
+    
+    
     return (
       <div className='cardContainer'>
           <div key={id} className="card"> 
@@ -21,6 +24,7 @@ function Item({img, nombre, valor, id, categoria}) {
             <button type="button" className="btn btn-primary">Ver detalle</button>
           </Link>
           <button onClick={() => agregarAlCarrito(id)}>Agregar al carrito</button>
+          {/* <button>Agregar al carrito</button> */}
           {/* <button type="button" className="btn btn-primary" onClick={() => agregarAlCarrito(id)}>Agregar al carrito</button> */}
           {/* <BotonAgregarCarrito/> */}
         </div>
