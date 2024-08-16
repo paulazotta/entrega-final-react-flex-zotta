@@ -27,7 +27,7 @@ function App() {
       <div>  
       <ContextProvider>
         <BrowserRouter>
-          <p>Hola mundos</p>
+          <p>Hola mundossss</p>
           <NavBar></NavBar>
           {/* <Filter filterState={filterProducts} setFilterState={setFilterProducts} /> */}
 
@@ -36,14 +36,17 @@ function App() {
             <Route path="/inicio" element={<Inicio/>}></Route>
             <Route path='/prueba' element={<p>Etiqueta de prueba</p>} ></Route>
             <Route path='/contacto' element={<Contacto/>} ></Route>
-            <Route path='/productos' element={<ItemListConteiner/>} ></Route>
+            
+            <Route path='/productos' element={<ItemListConteiner/>}></Route>
+            
+            
           
             <Route path="/detalle/:id" element={<ItemDetail/>}></Route>
             <Route path="*" element={<Error404 />} ></Route>
           </Routes>
 
         </BrowserRouter>
-        </ContextProvider>
+      </ContextProvider>
       </div> 
   )
 }

@@ -4,12 +4,12 @@ import {addDoc, collection, getDocs, getFirestore} from "firebase/firestore";
 import Swal from 'sweetalert2';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjOUbLlh3kF6D38EnFhK_M7onjL3LKH8E",
-  authDomain: "react-flex-paulazotta.firebaseapp.com",
-  projectId: "react-flex-paulazotta",
-  storageBucket: "react-flex-paulazotta.appspot.com",
-  messagingSenderId: "825040831188",
-  appId: "1:825040831188:web:56faee867500ad6ad7f141"
+  apiKey: "AIzaSyAokj71nAJEKcqiSGIdUHnh9G54v-70OGc",
+  authDomain: "react-flex-entrega-final-zotta.firebaseapp.com",
+  projectId: "react-flex-entrega-final-zotta",
+  storageBucket: "react-flex-entrega-final-zotta.appspot.com",
+  messagingSenderId: "658985149827",
+  appId: "1:658985149827:web:82b80b59e59a3cadfb82b6"
 };
 
 // Initialize Firebase
@@ -34,18 +34,19 @@ export const useAppContext = () => useContext(AppContext);
 export const ContextProvider = (props) => {
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState ([]);
-  
-  //    // Agregar useEffect para cargar los datos al montar el componente
-  //    useEffect(() => {
-  //     cargarData();
-  // }, []);
+    const [isLoading, setIsLoading] = useState(true);
 
-    function cargarData () {
+    useEffect(() => {
+      cargarData();
+    }, [productos]);
+
+    function cargarData ()  {
         
-      getDocs(productsCollection).then(snapshot => {
+      return getDocs(productsCollection).then(snapshot => {
         let arrayProductos = snapshot.docs.map(el => el.data());
-        setProductos(arrayProductos)
-        }).catch (err => console.error(err));
+        setProductos(arrayProductos);
+        setIsLoading(false); 
+      }).catch(err => console.error(err));
     };
     
     function agregarAlCarrito (id) {
@@ -63,7 +64,7 @@ export const ContextProvider = (props) => {
           timer: 1500
         });
     };
-
+   
     function crearOrden (){
       if (carrito.length > 0){
         const nuevaOrden = {
@@ -95,7 +96,7 @@ export const ContextProvider = (props) => {
     };
   return (
     <div>
-      <AppContext.Provider value={{productos, carrito, setCarrito, cargarData, agregarAlCarrito, crearOrden}}>
+      <AppContext.Provider value={{productos, carrito, setCarrito, cargarData, agregarAlCarrito, crearOrden, isLoading}}>
         {props.children}
       </AppContext.Provider>
     </div>

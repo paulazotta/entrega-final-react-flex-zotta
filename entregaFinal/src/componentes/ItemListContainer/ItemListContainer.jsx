@@ -8,7 +8,7 @@ const ItemListConteiner = () =>{
 
   useEffect (() =>{
     cargarData();
-  })
+  }, [productos])
   // const filtrarProductos = (productos, filtro) =>{
   //   if (filtro ===  "todos"){
   //     return productos;
@@ -18,14 +18,14 @@ const ItemListConteiner = () =>{
   // }
   // const productosFiltrados = filtrarProductos (productos, filtro);
   return(
-    <>
+    <div className="itemListContainer">
       {
         productos.length === 0?
         <Loader/>
         :
         <ItemList productos={productos} />
       }
-    </>
+    </div>
   )  
 }
 

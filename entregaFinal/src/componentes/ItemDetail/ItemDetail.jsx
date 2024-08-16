@@ -4,18 +4,22 @@ import { useParams } from 'react-router-dom'
 import DetalleProductos from '../DetalleProductos/DetalleProductos';
 import { useAppContext } from '../Context/Context';
 
-const ItemDetail = ({productos}) => {
-    
- 
-  const {id} = useParams();
-    
+const ItemDetail = () => {
+   
+  const { id } = useParams();
+  const { productos, isLoading } = useAppContext(); 
+  const [productoSeleccionado, setProductoSeleccionado] = useState({});
 
-    const [productoSeleccionado, setProductoSeleccionado] = useState({})
+    useEffect(() => {
+        if (!isLoading && productos && productos.length > 0) {
+            const findProduct = productos.find(el => el.id === parseInt(id));
+            setProductoSeleccionado(findProduct);
+        }
+    }, [isLoading, productos, id]);
 
-    useEffect(()=>{
-        const findProduct = productos.find(el => el.id ===  parseInt(id))
-       setProductoSeleccionado(findProduct)
-    },[id, productos])
+    if (isLoading) {
+        return <div>Cargando...</div>; 
+    }
   
   return (
     <div>

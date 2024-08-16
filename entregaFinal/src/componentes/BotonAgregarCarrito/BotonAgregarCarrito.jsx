@@ -1,23 +1,30 @@
 import React from 'react';
 import { useState } from 'react';
 import './botonCarrito.css';
+import Button from 'react-bootstrap/Button';
+import { useAppContext } from '../Context/Context';
 
 function BotonAgregarCarrito() {
-    // useState
+  const {agregarAlCarrito} = useAppContext();
+    
+  // useState
     const [agregar, quitar] = useState(true)
 
     // Ternario
-    const textoBoton = agregar ?  'Agregar al carrito' : 'Quitar del carrito'
+    const textoBoton = agregar ?  "Agregar al carrito" : 'Quitar del carrito'
     
     // Agrego la actualización del estado
+    
     const handleClick = () => {
+      
         quitar (!agregar)
     }
   return (
     <div>
-      <button onClick={handleClick} className='botonCarrito'>
+      <Button variant="info" onClick={handleClick}>{textoBoton}</Button>{' '}
+      {/* <button onClick={handleClick} className='botonCarrito'>
         {textoBoton}
-      </button>
+      </button> */}
     </div>
   )
 }
