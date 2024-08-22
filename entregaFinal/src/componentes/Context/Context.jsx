@@ -21,7 +21,7 @@ const ordersCollection = collection (db, "ordenes");
 
 
 
-// 1. Creo las funciones para usar el contexto
+// 1. Creo las funciones para usar el contexto / Este es el que tenemos que consumir
 // Creo el contexto 
 const AppContext = createContext(); 
 
@@ -29,13 +29,15 @@ const AppContext = createContext();
 
 export const useAppContext = () => useContext(AppContext);
 
-// 2. Armo el provider
+// 2. Armo el provider. Este es que nos provee de acceso al contexto
 
 export const ContextProvider = (props) => {
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState ([]);
     const [isLoading, setIsLoading] = useState(true);
 
+ 
+  
     function cargarData ()  {
       return getDocs(productsCollection).then(snapshot => {
         let arrayProductos = snapshot.docs.map(el => el.data());
@@ -44,13 +46,32 @@ export const ContextProvider = (props) => {
       }).catch(err => console.error(err));
     };
     
-    function agregarAlCarrito (id) {
-        const carritoAuxiliar = [...carrito];
-        const productoAAgregar = productos.find (el=> el.id === id);
-        carritoAuxiliar.push(productoAAgregar);
-        setCarrito(carritoAuxiliar);
+    // function agregarAlCarrito (id) {
+    //     const carritoAuxiliar = [...carrito];
+    //     const productoAAgregar = productos.find (el=> el.id === id);
+    //     carritoAuxiliar.push(productoAAgregar);
+    //     setCarrito(carritoAuxiliar);
         
-        // Sweet alert 
+    //     // Sweet alert 
+    //     Swal.fire({
+    //       position: "top-end",
+    //       icon: "success",
+    //       title: "Producto agregado correctamente",
+    //       showConfirmButton: false,
+    //       timer: 1500
+    //     });
+    // };
+    // Carrito 
+    
+    // const [cart, setCart] = useState([])
+
+    // console.log(carrito)
+
+    const agregarAlCarrito = (id, cantidad) => {
+      if (!isInCart (id)){
+          setCarrito(prev => [...prev, {id, cantidad}])
+
+          // Sweet alert 
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -58,20 +79,30 @@ export const ContextProvider = (props) => {
           showConfirmButton: false,
           timer: 1500
         });
-    };
-   
+      } else {
+          console.error("el producto ya fue agregado")
+      }  
+    }
+    
     function crearOrden (){
       if (carrito.length > 0){
         const nuevaOrden = {
           nombre: "Paula",
-          telefono: 15151515,
-          productos: carrito,
+          // telefono: 15151515,
+          productos: carrito.map(item => {
+            if (!item.id) {
+              throw new Error("Producto con datos incompletos en el carrito");
+            }
+            return item;
+          }),
+          
         };
         // console.log(nuevaOrden)
-        addDoc(ordersCollection, nuevaOrden).then(response =>{
-          console.log("orden creada con el id:", response.id);
+        addDoc(ordersCollection, nuevaOrden).then(response =>{ 
+          console.log("orden creada con el id:", response.id); // Cuando hago click en el icono me trae acá
           setCarrito([]);
         }).catch (err => {
+          console.error(err)
           alert ("Por favor intente de nuevo en unos minutos");
           Swal.fire({
             icon: "error",
@@ -89,11 +120,29 @@ export const ContextProvider = (props) => {
         });
       }   
     };
+    
+    const removeItem = (id) => {
+      const carritoAuxiliar = carrito.filter(prod => prod.id !== id)
+      setCarrito (carritoAuxiliar)
+  }
+
+  const clearCart = () => {
+    setCarrito ([])
+  }
+
+  const isInCart = (id) =>{
+      return carrito.some(prod => prod.id === id)
+  }
+
+  console.log(carrito)
+  
   return (
     <div>
-      <AppContext.Provider value={{productos, carrito, setCarrito, cargarData, agregarAlCarrito, crearOrden, isLoading}}>
-        {props.children}
+      <AppContext.Provider value={{productos, carrito,  setCarrito, cargarData, agregarAlCarrito, crearOrden, isLoading, isInCart, removeItem, clearCart}}>
+      
+       {props.children}
       </AppContext.Provider>
     </div>
   )
 }
+// filter, setFilter, useFilter,

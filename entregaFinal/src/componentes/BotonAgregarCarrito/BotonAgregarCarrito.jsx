@@ -22,7 +22,7 @@ function BotonAgregarCarrito() {
   return (
     <div>
       
-      <Button variant="info">Agregar al carrito</Button>{' '}
+      <Button variant="info">Agregar </Button>{' '}
       {/* <button onClick={handleClick} className='botonCarrito'>
         {textoBoton}
       </button> */}
