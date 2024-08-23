@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import ItemList from "../ItemList/ItemList"
 import Loader from "../Loader/Loader";
 import { useAppContext } from "../Context/Context";
+import "./itemListContainer.css"
 
 const ItemListConteiner = () =>{
   // const {cargarData, productos, filterProducts} = useAppContext()
@@ -28,13 +29,15 @@ const ItemListConteiner = () =>{
   // }
   // const filteredProducts = filterProducts(productos)
   return(
-    <div className="itemListContainer">
+    <div className="itemListContainer" >
       {
         productos.length === 0?
         <Loader/>
         :
         // <ItemList productos={filteredProducts} />
-        <ItemList productos={productos} />
+        <div >
+          <ItemList productos={productos} />
+        </div>
       }
     </div>
   )  

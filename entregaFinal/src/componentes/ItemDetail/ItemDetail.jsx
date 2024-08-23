@@ -19,6 +19,7 @@ const ItemDetail = () => {
       id: productoSeleccionado.id,
       nombre: productoSeleccionado.nombre,
       valor: productoSeleccionado.valor,
+      caracteristicas: productoSeleccionado.caracteristicas,
       cantidad,
     }
     agregarAlCarrito(item.id, item.cantidad, item.nombre, item.valor)
@@ -41,8 +42,7 @@ const ItemDetail = () => {
           <h5>{productoSeleccionado.categoria}</h5>
           <h3>{productoSeleccionado.nombre}</h3>
           <h4>{productoSeleccionado.valor}</h4>
-          
-          
+          <p>{productoSeleccionado.caracteristicas}</p>
         </div>
         <div>
           {

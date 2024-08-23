@@ -10,7 +10,7 @@ import { Filters } from '../Filters/Filters';
 function Navbar() {
 
   return (
-    <div>
+   
     <header>
       <nav>
         <ul>
@@ -31,7 +31,7 @@ function Navbar() {
         </ul>
       </nav>
     </header>
-  </div>
+  
 )
 }
 

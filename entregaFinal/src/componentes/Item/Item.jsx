@@ -10,10 +10,10 @@ import "./item.css"
 
 function Item({img, nombre, valor, id, categoria, stock}) {
     
-    const {agregarAlCarrito} = useAppContext();
-    const handleAddToCart = (cantidad) => {
-      agregarAlCarrito(id, cantidad, nombre, valor);
-  };
+    // const {agregarAlCarrito} = useAppContext();
+  //   const handleAddToCart = (cantidad) => {
+  //     agregarAlCarrito(id, cantidad, nombre, valor);
+  // };
    
     
     return (
@@ -27,7 +27,7 @@ function Item({img, nombre, valor, id, categoria, stock}) {
           <Link to={`/detalle/${id}`}>
             <button type="button" className="btn btn-primary">Ver detalle</button>
           </Link>
-          <ItemCount stock={stock} inicial={0} onAdd={handleAddToCart} />
+          {/* <ItemCount stock={stock} inicial={20} onAdd={handleAddToCart} /> */}
           {/* <button onClick={() => agregarAlCarrito(id)}>Agregar al carrito</button> */}
         </div>
 

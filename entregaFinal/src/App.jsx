@@ -51,7 +51,7 @@ function App() {
             {/* <Route path='/prueba' element={<p>Etiqueta de prueba</p>} ></Route> */}
             <Route path='/contacto' element={<Contacto/>} ></Route>
             
-            <Route path='/productos' element={<ItemListConteiner/>}></Route>
+              <Route path='/productos' element={<ItemListConteiner/>}></Route>
             
             <Route path='/productos/mostarCarrito' element={<MostrarCarrito/>}></Route>
           
