@@ -15,32 +15,37 @@ const MostrarCarrito = () => {
     //         </div>
     //     )
     // }
-
+    const total = carrito.reduce((acc, el) => acc + (el.valor * el.cantidad), 0)
     
   return (
     <div className='containerMostrarCarrito'>
         {carrito.lenght === 0? (
             <h1>Carrito vacío</h1>
         ) : (
-        
-            // <h1>Carrito lleno</h1>
             <div>
-                {carrito.map((el) =>(
-                    
-                    <div key={el.id} className='mostrarCarrito'>
+                <div>
+                    {carrito.map((el) =>(
                         
-                        
-                        <p>{el.nombre}</p>
-                        {/* <p>Total $ {" "} {Number.parseFloat(el.valor * el.cantidadTotal).toFixed(2)}</p> */}
-                        <p> USD {el.valor}</p>
-                        <button onClick={() => removeItem(el.id)} className='botonCantidad'> - </button>
-                        <p>{el.cantidad}</p>
-                        <button onClick={() => agregarAlCarrito(el.id, el.cantidad +1)} className='botonCantidad'>+</button>
-                        <button  onClick={() => clearCart(el.id)} className='botonQuitar'> X </button>
-                    </div>
-                )
-                
-            )}
+                        <div key={el.id} className='mostrarCarrito'> 
+                            <p>{el.nombre}</p>
+                            {/* <p>Total $ {" "} {Number.parseFloat(el.valor * el.cantidadTotal).toFixed(2)}</p> */}
+                            
+                            <p> USD {el.valor}</p>
+                            <button onClick={() => removeItem(el.id)} className='botonCantidad'> - </button>
+                            <p>{el.cantidad}</p>
+                            <button onClick={() => agregarAlCarrito(el.id, el.cantidad +1)} className='botonCantidad'>+</button>
+                            <button  onClick={() => clearCart(el.id)} className='botonQuitar'> X </button>
+                            {/* <p>Total a pagar USD {total}</p> */}
+                            <p>Total USD {el.valor * el.cantidad}</p>
+                        </div>
+                        )
+                    )}
+                </div>
+                <div>
+                    <p>Total de la compra USD {total}</p>
+                    <button>Realizar pago</button>
+                </div>
+            
             </div>
         )}
         {/* {carrito.map(carritoItem => {

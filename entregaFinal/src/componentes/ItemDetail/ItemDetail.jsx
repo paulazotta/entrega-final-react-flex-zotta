@@ -5,7 +5,7 @@ import DetalleProductos from '../DetalleProductos/DetalleProductos';
 import { useAppContext } from '../Context/Context';
 import ItemCount from '../ItemCount/ItemCount';
 
-const ItemDetail = ({nombre, valor, stock}) => {
+const ItemDetail = () => {
    
   const { id } = useParams();
   const { agregarAlCarrito, productos, isLoading } = useAppContext(); 
@@ -37,22 +37,26 @@ const ItemDetail = ({nombre, valor, stock}) => {
   
   return (
     <div>
-        {/* <p>
-            Detalle del componente {productoSeleccionado.nombre}
-        </p> */}
-        {/* <DetalleProductos  key={productoSeleccionado.id} categoria={productoSeleccionado.categoria} id={productoSeleccionado.id} img ={productoSeleccionado.img} nombre={productoSeleccionado.nombre} caracteristicas={productoSeleccionado.caracteristicas}/> */}
         <div key={productoSeleccionado.id} className='cardProducto'>
           <h5>{productoSeleccionado.categoria}</h5>
           <h3>{productoSeleccionado.nombre}</h3>
           <h4>{productoSeleccionado.valor}</h4>
-          <p>Hola</p>
+          
+          
         </div>
         <div>
           {
             cantidadAgregada > 0? (
-              <Link to="/productos/mostarCarrito">Terminar compra</Link>
+            <>
+              <ItemCount/>
+              <Link to="/productos/mostarCarrito">
+                <button>Terminar compra</button> </Link>
+              </>
             ) : (
-              <ItemCount   inicial={1} stock={10} onAdd={handleOnAdd}/>
+            <>
+              <p>Selecciona la cantidad deseada</p>
+              <ItemCount   inicial={0} stock={10} onAdd={handleOnAdd}/>
+              </>
             )
           }
         </div>

@@ -16,6 +16,18 @@ const ItemCount = ({stock, inicial, onAdd}) => {
             setCantidad(cantidad-1)
         }
     }
+    
+    const handleAddToCart = () => {
+        if (cantidad > 0) {
+            onAdd(cantidad);
+            
+        } else {
+            alert("La cantidad debe ser mayor que cero para agregar al carrito");
+            <button>Agregar</button>
+        }
+    };
+    const textoBoton = cantidad > 0 ?  "Ver carrito" : 'Agregar al carrito'
+  
   return (
     <div className='contador'>
         <div className='contadorCantidad'>
@@ -24,7 +36,7 @@ const ItemCount = ({stock, inicial, onAdd}) => {
             <button onClick={incrementar}>+</button>
         </div>
         <div>
-            <button onClick={() => onAdd(cantidad)} inicial={1} stock={stock}  disabled={!stock}>Agregar al carrito</button>
+            <button onClick={handleAddToCart} inicial={0} stock={stock}  disabled={!stock}>{textoBoton}</button>
         </div>
         
     </div>
