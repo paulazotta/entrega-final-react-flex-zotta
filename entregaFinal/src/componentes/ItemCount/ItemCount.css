@@ -1,9 +1,0 @@
-.contador{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.contadorCantidad{
-    display: flex;
-    /* justify-content: center; */
-}

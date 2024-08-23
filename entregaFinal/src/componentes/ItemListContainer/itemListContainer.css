@@ -1,9 +1,0 @@
-.contenedor{
-    display: flex;
-    border: 5px solid red;
-}
-.itemListContainer{
-    display: flex;
-    flex-direction: column;
-    
-}
