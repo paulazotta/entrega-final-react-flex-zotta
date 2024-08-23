@@ -24,7 +24,10 @@ function Navbar() {
             <li>
             <Link to="/contacto" className="nav-link">Contacto</Link>
             </li>
-            <CartWidget/>
+            <Link to='/productos/mostarCarrito'>
+              <CartWidget/>
+            </Link>
+            
         </ul>
       </nav>
     </header>

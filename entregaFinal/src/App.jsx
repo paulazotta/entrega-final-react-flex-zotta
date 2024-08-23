@@ -1,6 +1,6 @@
 
 import './App.css'
-import NavBar from './componentes/NavBar/NavBar'
+import Navbar from './componentes/Navbar/Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ItemDetail from './componentes/ItemDetail/ItemDetail'
 import Contacto from './componentes/Contacto/Contacto'
@@ -39,7 +39,7 @@ function App() {
         
          <p> hola mundo</p>
           {/* <NavBar changeFilters={setFilter}></NavBar> */}
-          <NavBar/>
+          <Navbar/>
           {/* <ItemCount inicial={1} stock={10} onAdd={(cantidad) => console.log("cantidad agregada", cantidad)}/> */}
           {/* <Filter filterState={filterProducts} setFilterState={setFilterProducts} /> */}
 
