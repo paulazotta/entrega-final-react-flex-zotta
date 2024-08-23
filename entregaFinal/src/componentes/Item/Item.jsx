@@ -12,7 +12,7 @@ function Item({img, nombre, valor, id, categoria, stock}) {
     
     const {agregarAlCarrito} = useAppContext();
     const handleAddToCart = (cantidad) => {
-      agregarAlCarrito(id, cantidad);
+      agregarAlCarrito(id, cantidad, nombre, valor);
   };
    
     

@@ -5,7 +5,7 @@ import DetalleProductos from '../DetalleProductos/DetalleProductos';
 import { useAppContext } from '../Context/Context';
 import ItemCount from '../ItemCount/ItemCount';
 
-const ItemDetail = ({nombre, precio, stock}) => {
+const ItemDetail = ({nombre, valor, stock}) => {
    
   const { id } = useParams();
   const { agregarAlCarrito, productos, isLoading } = useAppContext(); 
@@ -16,9 +16,12 @@ const ItemDetail = ({nombre, precio, stock}) => {
   const handleOnAdd = (cantidad) =>{
     setCantidadAgregada(cantidad)
     const item = {
-      id, nombre, precio
+      id: productoSeleccionado.id,
+      nombre: productoSeleccionado.nombre,
+      valor: productoSeleccionado.valor,
+      cantidad,
     }
-    agregarAlCarrito(item, cantidad)
+    agregarAlCarrito(item.id, item.cantidad, item.nombre, item.valor)
   }
 
     useEffect(() => {
@@ -41,6 +44,7 @@ const ItemDetail = ({nombre, precio, stock}) => {
         <div key={productoSeleccionado.id} className='cardProducto'>
           <h5>{productoSeleccionado.categoria}</h5>
           <h3>{productoSeleccionado.nombre}</h3>
+          <h4>{productoSeleccionado.valor}</h4>
           <p>Hola</p>
         </div>
         <div>

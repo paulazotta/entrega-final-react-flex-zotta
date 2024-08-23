@@ -67,9 +67,9 @@ export const ContextProvider = (props) => {
 
     // console.log(carrito)
 
-    const agregarAlCarrito = (id, cantidad) => {
-      if (!isInCart (id)){
-          setCarrito(prev => [...prev, {id, cantidad}])
+    const agregarAlCarrito = (id, cantidad, nombre, valor) => {
+      if (!isInCart (id, nombre, valor)){
+          setCarrito(prev => [...prev, {id, cantidad, nombre, valor}])
 
           // Sweet alert 
         Swal.fire({
@@ -92,12 +92,14 @@ export const ContextProvider = (props) => {
           productos: carrito.map(item => {
             console.log("Verificando producto:", item);
 
-            if (!item.id || !item.cantidad) {
+            if (!item.id || !item.cantidad || !item.valor || !item.nombre) {
               throw new Error("Producto con datos incompletos en el carrito");
             }
             return {
               id: item.id,
               cantidad: item.cantidad,
+              valor: item.valor,
+              nombre: item.nombre
             };
           }),
           
@@ -139,7 +141,7 @@ export const ContextProvider = (props) => {
       return carrito.some(prod => prod.id === id)
   }
 
-  console.log(carrito)
+  console.log( "este es el carrito:", carrito)
   
   return (
     <div>

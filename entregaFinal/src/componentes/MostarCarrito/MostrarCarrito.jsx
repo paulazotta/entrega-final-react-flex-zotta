@@ -29,9 +29,10 @@ const MostrarCarrito = () => {
                     
                     <div key={el.id} className='mostrarCarrito'>
                         
-                        <p>Hola</p>
-                        <p>$ {el.nombre}</p>
-                        <p>Total $ {" "} {Number.parseFloat(el.precio * el.cantidadTotal).toFixed(2)}</p>
+                        
+                        <p>{el.nombre}</p>
+                        {/* <p>Total $ {" "} {Number.parseFloat(el.valor * el.cantidadTotal).toFixed(2)}</p> */}
+                        <p> USD {el.valor}</p>
                         <button onClick={() => removeItem(el.id)} className='botonCantidad'> - </button>
                         <p>{el.cantidad}</p>
                         <button onClick={() => agregarAlCarrito(el.id, el.cantidad +1)} className='botonCantidad'>+</button>

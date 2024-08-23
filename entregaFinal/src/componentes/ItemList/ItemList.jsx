@@ -1,6 +1,7 @@
 // Acá se va a renderizar la lista de todos los items 
 // Vamos a pasar todos los productos 
 // Acá vamos a crear las cards
+// Aca deberia ir el filtro
 
 import React from 'react';
 import Item from '../Item/Item';
