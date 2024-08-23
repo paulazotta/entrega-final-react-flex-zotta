@@ -2,10 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { FiltersProvider} from './componentes/Context/FiltersContext.jsx'
+import { FiltersProvider } from './componentes/Context/FiltersContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <FiltersProvider>
+ <FiltersProvider>
       <App />
   </FiltersProvider>
   

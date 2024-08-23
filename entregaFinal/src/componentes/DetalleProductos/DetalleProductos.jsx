@@ -1,5 +1,4 @@
 import React from 'react'
-import BotonAgregarCarrito from '../BotonAgregarCarrito/BotonAgregarCarrito'
 // import './cardDetalle.css'
 import { useAppContext } from '../Context/Context';
 

@@ -7,8 +7,8 @@ export const useFilterContext = () => useContext(FiltersContext)
 export function FiltersProvider ({children}){
     const [filters, setFilters] = useState({
         categoria: "todas",
-        valorMin: 200
-    })
+        valorMin: 0
+    });
 
 
     return(

@@ -5,20 +5,28 @@ import {useFilterContext} from "../Context/FiltersContext";
 import React from "react";
 
 export function Filters (){
-    const {setFilter} = useFilters()
+    const {setFilters} = useFilters()
     const [valorMin, setValorMin] = useState(0);
     const valorMinFilterId = useId();
     const categoriaFilterId = useId();
 
-    console.log({categoriaFilterId})
 
     const handleChangeValorMin = (event) =>{
-        setValorMin(event.target.value)
-        setFilter(prevState =>({
+        const value = event.target.value;
+        setValorMin(value);
+        setFilters(prevState =>({
             ...prevState, 
-            valorMin: event.target.value
+            valorMin: value
         }))
     }
+
+    const handleChangeCategoria = (event) => {
+        setFilters(prevState => ({
+          ...prevState,
+          categoria: event.target.value
+        }));
+      };
+
     return(
         <section className="filters">
             <div>
@@ -26,8 +34,8 @@ export function Filters (){
                 <input 
                     type="range" 
                     id={valorMinFilterId} 
-                    min="200" 
-                    max="3000"
+                    min="0" 
+                    max="3001"
                     onChange={handleChangeValorMin} 
                 />
                 <span>USD {valorMin}</span>
@@ -35,7 +43,7 @@ export function Filters (){
             </div>
             <div>
                <label htmlFor={categoriaFilterId}>Categoría</label> 
-               <select id={categoriaFilterId}>
+               <select id={categoriaFilterId} onChange={handleChangeCategoria}>
                     <option value="todas">Todas</option>
                     <option value="taller">Taller</option>
                     <option value="particular">Particular</option>

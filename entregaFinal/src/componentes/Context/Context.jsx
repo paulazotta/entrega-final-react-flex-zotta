@@ -32,6 +32,7 @@ export const useAppContext = () => useContext(AppContext);
 // 2. Armo el provider. Este es que nos provee de acceso al contexto
 
 export const ContextProvider = (props) => {
+  
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState ([]);
     const [isLoading, setIsLoading] = useState(true);
