@@ -1,0 +1,30 @@
+
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ef9e3e;
+   
+    justify-content: space-around;
+}    
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    
+    align-items: center;
+}
+li{
+    display: flex;
+    list-style: none;
+    padding: 10px;
+
+   
+}
+.nav-link{
+    text-align: center;
+    text-decoration: none;
+}
+
+.cartWidget{
+    width: 15%;
+}

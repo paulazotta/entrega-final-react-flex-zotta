@@ -1,0 +1,27 @@
+.containerMostrarCarrito{
+    display: flex;
+    color: black;
+    border: 1px solid black;
+    justify-content: space-around;
+}
+
+.mostrarCarrito{
+    display: flex;
+    border: 0.5px solid black;
+   
+    
+}
+.botonCantidad{
+    color: rgb(243, 232, 232);
+    background-color: rgb(65, 204, 246);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    
+}
+.botonQuitar{
+    background-color: rgb(159, 17, 17);
+    border-radius: 100px;
+}
