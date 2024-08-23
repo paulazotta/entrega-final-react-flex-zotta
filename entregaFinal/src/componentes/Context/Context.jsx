@@ -36,8 +36,7 @@ export const ContextProvider = (props) => {
     const [carrito, setCarrito] = useState ([]);
     const [isLoading, setIsLoading] = useState(true);
 
- 
-  
+
     function cargarData ()  {
       return getDocs(productsCollection).then(snapshot => {
         let arrayProductos = snapshot.docs.map(el => el.data());
@@ -45,27 +44,6 @@ export const ContextProvider = (props) => {
         setIsLoading(false); 
       }).catch(err => console.error(err));
     };
-    
-    // function agregarAlCarrito (id) {
-    //     const carritoAuxiliar = [...carrito];
-    //     const productoAAgregar = productos.find (el=> el.id === id);
-    //     carritoAuxiliar.push(productoAAgregar);
-    //     setCarrito(carritoAuxiliar);
-        
-    //     // Sweet alert 
-    //     Swal.fire({
-    //       position: "top-end",
-    //       icon: "success",
-    //       title: "Producto agregado correctamente",
-    //       showConfirmButton: false,
-    //       timer: 1500
-    //     });
-    // };
-    // Carrito 
-    
-    // const [cart, setCart] = useState([])
-
-    // console.log(carrito)
 
     const agregarAlCarrito = (id, cantidad, nombre, valor) => {
       if (!isInCart (id, nombre, valor)){
@@ -110,9 +88,9 @@ export const ContextProvider = (props) => {
           }),
           
         };
-        // console.log(nuevaOrden)
+       
         addDoc(ordersCollection, nuevaOrden).then(response =>{ 
-          console.log("orden creada con el id:", response.id); // Cuando hago click en el icono me trae acá
+          //console.log("orden creada con el id:", response.id); 
           setCarrito([]);
         }).catch (err => {
           console.error(err)
@@ -165,8 +143,6 @@ export const ContextProvider = (props) => {
   const isInCart = (id) =>{
       return carrito.some(prod => prod.id === id)
   }
-
-  console.log( "este es el carrito:", carrito)
   
   return (
     <div>

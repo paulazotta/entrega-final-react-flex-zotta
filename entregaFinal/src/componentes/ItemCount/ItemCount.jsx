@@ -12,6 +12,7 @@ const ItemCount = ({stock, inicial, onAdd}) => {
             setCantidad(cantidad+1)
         }
     }
+    
     const decrementar = () =>{
         if (cantidad > 1){
             setCantidad(cantidad-1)
@@ -20,20 +21,15 @@ const ItemCount = ({stock, inicial, onAdd}) => {
     
     const handleAddToCart = () => {
         if (cantidad > 0) {
-            onAdd(cantidad);
-            
+            onAdd(cantidad);  
         } else {
             Swal.fire({
                 icon: "info",
                 title: "Tu carrito está vacío",
                 text: "Seleccioná la cantidad de equipos que querés",
-                
-              });
-            
+              });  
         }
     };
-    // const textoBoton = cantidad > 0 ?  "Ver carrito" : 'Agregar al carrito'
-  
   return (
     <div className='contador'>
         <div className='contadorCantidad'>
