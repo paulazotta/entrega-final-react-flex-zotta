@@ -16,7 +16,16 @@ const MostrarCarrito = () => {
     //     )
     // }
     const total = carrito.reduce((acc, el) => acc + (el.valor * el.cantidad), 0)
-    
+    // const incrementar = () =>{
+    //     if (cantidad < stock){
+    //         setCantidad(cantidad+1)
+    //     }
+    // }
+    // const decrementar = () =>{
+    //     if (cantidad > 1){
+    //         setCantidad(cantidad-1)
+    //     }
+    // }
   return (
     <div className='containerMostrarCarrito'>
         {carrito.lenght === 0? (
@@ -28,15 +37,20 @@ const MostrarCarrito = () => {
                         
                         <div key={el.id} className='mostrarCarrito'> 
                             <p>{el.nombre}</p>
+                            <p> USD {el.valor}</p>
+                            <p>{el.cantidad}</p>
+                            <p>Total USD {el.valor * el.cantidad}</p>
+                            <button  onClick={() => removeItem(el.id)} className='botonQuitar'> X </button>
+                            
                             {/* <p>Total $ {" "} {Number.parseFloat(el.valor * el.cantidadTotal).toFixed(2)}</p> */}
                             
-                            <p> USD {el.valor}</p>
-                            <button onClick={() => removeItem(el.id)} className='botonCantidad'> - </button>
-                            <p>{el.cantidad}</p>
-                            <button onClick={() => agregarAlCarrito(el.id, el.cantidad +1)} className='botonCantidad'>+</button>
-                            <button  onClick={() => clearCart(el.id)} className='botonQuitar'> X </button>
+                            
+                            {/* <button onClick={() => removeItem(el.id)} className='botonCantidad'> - </button> */}
+                            
+                            {/* <button onClick={incrementar} className='botonCantidad'>+</button> */}
+                            
                             {/* <p>Total a pagar USD {total}</p> */}
-                            <p>Total USD {el.valor * el.cantidad}</p>
+                            
                         </div>
                         )
                     )}
@@ -44,6 +58,7 @@ const MostrarCarrito = () => {
                 <div>
                     <p>Total de la compra USD {total}</p>
                     <button>Realizar pago</button>
+                    <button onClick={clearCart}>Limpiar carrito</button>
                 </div>
             
             </div>

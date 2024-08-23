@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../Context/Context';
 import "./ItemCount.css"
+import Swal from 'sweetalert2';
 
 const ItemCount = ({stock, inicial, onAdd}) => {
     const {agregarAlCarrito} = useAppContext()
@@ -22,7 +23,12 @@ const ItemCount = ({stock, inicial, onAdd}) => {
             onAdd(cantidad);
             
         } else {
-            alert("La cantidad debe ser mayor que cero para agregar al carrito");
+            Swal.fire({
+                icon: "info",
+                title: "Tu carrito está vacío",
+                text: "Seleccioná la cantidad de equipos que querés",
+                
+              });
             
         }
     };
