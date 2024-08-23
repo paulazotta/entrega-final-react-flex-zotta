@@ -90,10 +90,15 @@ export const ContextProvider = (props) => {
           nombre: "Paula",
           // telefono: 15151515,
           productos: carrito.map(item => {
-            if (!item.id) {
+            console.log("Verificando producto:", item);
+
+            if (!item.id || !item.cantidad) {
               throw new Error("Producto con datos incompletos en el carrito");
             }
-            return item;
+            return {
+              id: item.id,
+              cantidad: item.cantidad,
+            };
           }),
           
         };

@@ -5,7 +5,7 @@ import "./MostrarCarrito.css"
 
 const MostrarCarrito = () => {
   
-    const {carrito, clearCart, removeItem, agregarAlCarrito} = useAppContext(useAppContext);
+    const {carrito, clearCart, removeItem, agregarAlCarrito} = useAppContext();
 
     // if(cantidadTotal === 0){
     //     return(
@@ -34,7 +34,7 @@ const MostrarCarrito = () => {
                         <p>Total $ {" "} {Number.parseFloat(el.precio * el.cantidadTotal).toFixed(2)}</p>
                         <button onClick={() => removeItem(el.id)} className='botonCantidad'> - </button>
                         <p>{el.cantidad}</p>
-                        <button onClick={() => agregarAlCarrito(el.id)} className='botonCantidad'>+</button>
+                        <button onClick={() => agregarAlCarrito(el.id, el.cantidad +1)} className='botonCantidad'>+</button>
                         <button  onClick={() => clearCart(el.id)} className='botonQuitar'> X </button>
                     </div>
                 )

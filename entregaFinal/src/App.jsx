@@ -40,10 +40,10 @@ function App() {
          <p> hola mundo</p>
           {/* <NavBar changeFilters={setFilter}></NavBar> */}
           <NavBar/>
-          <ItemCount inicial={1} stock={10} onAdd={(cantidad) => console.log("cantidad agregada", cantidad)}/>
+          {/* <ItemCount inicial={1} stock={10} onAdd={(cantidad) => console.log("cantidad agregada", cantidad)}/> */}
           {/* <Filter filterState={filterProducts} setFilterState={setFilterProducts} /> */}
 
-          {/* <ItemListConteiner productos={filteredProducts}/>*/}
+          {/* <ItemListConteiner productos={filteredProducts}/> */}
 
           <Routes>
             <Route path="" element={<Inicio/>}></Route>

@@ -1,6 +1,7 @@
 import "./Filters.css";
 import { useState, useId } from "react";
 import { useFilters } from "../hoocks/useFilters";
+import {useFilterContext} from "../Context/FiltersContext";
 import React from "react";
 
 export function Filters (){
